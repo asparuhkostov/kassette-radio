@@ -10,11 +10,11 @@ To build an early 2000s inspired website in an afternoon. Done entirely for fun.
 
 ## Implementation
 
-A small React application done with `create-react-app`. Nothing more nothing less.
+A small React application done with `create-react-app`. Nothing more, nothing less.
 
 ## Integrations
 
-Soundcloud Widget - see https://developers.soundcloud.com/docs/api/html5-widget for more details.
+SoundCloud Widget - see https://developers.soundcloud.com/docs/api/html5-widget for more details.
 
 ## Running
 
