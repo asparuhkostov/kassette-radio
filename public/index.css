@@ -1,0 +1,37 @@
+html {
+  background: url("./page_background.jpeg");
+  background-size: cover;
+  height: 100vh;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+
+  font-family: "Special Elite", cursive !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#graphic_container {
+  background: url("./polaroid.png");
+  background-size: contain;
+}
+
+.sound_controls_button {
+  flex: 1;
+}
+
+.sound_controls_button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
