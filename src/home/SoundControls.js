@@ -3,40 +3,48 @@ import React from "react";
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      trackDataUpdateInterval: null,
-    };
+    this.playTrack = this.playTrack.bind(this);
+    this.pauseTrack = this.pauseTrack.bind(this);
+    this.nextTrack = this.nextTrack.bind(this);
+    this.prevTrack = this.prevTrack.bind(this);
     this.reportCurrentTrackData = this.reportCurrentTrackData.bind(this);
   }
 
-  prevTrack() {}
-
-  playTrack() {
+  getSoundCloudWidget() {
     const iframeElement = document.querySelector("iframe");
-    let SCWidget = window.SC.Widget(iframeElement);
-    SCWidget.play();
+    let widget = window.SC.Widget(iframeElement);
+    return widget;
   }
 
-  pauseTrack() {}
+  prevTrack() {
+    const widget = this.getSoundCloudWidget();
+    widget.prev();
+    this.reportCurrentTrackData();
+  }
 
-  nextTrack() {}
+  playTrack() {
+    const widget = this.getSoundCloudWidget();
+    widget.play();
+    this.reportCurrentTrackData();
+  }
+
+  pauseTrack() {
+    const widget = this.getSoundCloudWidget();
+    widget.pause();
+  }
+
+  nextTrack() {
+    const widget = this.getSoundCloudWidget();
+    widget.next();
+    this.reportCurrentTrackData();
+  }
 
   reportCurrentTrackData() {
     const { setCurrentTrackData } = this.props;
-
-    const iframeElement = document.querySelector("iframe");
-    let SCWidget = window.SC.Widget(iframeElement);
-    SCWidget.getCurrentSound(setCurrentTrackData);
-  }
-
-  componentDidMount() {
-    this.setState({
-      trackDataUpdateInterval: setInterval(this.reportCurrentTrackData, 5000),
-    });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.trackDataUpdateInterval);
+    const widget = this.getSoundCloudWidget();
+    widget.getCurrentSound((res) =>
+      setCurrentTrackData(res.publisher_metadata.artist, res.title)
+    );
   }
 
   render() {

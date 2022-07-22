@@ -8,19 +8,8 @@ const CurrentTrackMarquee = ({ songName, artistName }) => (
 );
 
 export default () => {
-  const [currentTrackData, setCurrentTrackData] = useState({});
   const [artistName, setArtistName] = useState("");
   const [songName, setSongName] = useState("");
-
-  if (currentTrackData.publisher_metadata && currentTrackData.title) {
-    if (
-      artistName !== currentTrackData.publisher_metadata.artist &&
-      songName !== currentTrackData.title
-    ) {
-      setArtistName(currentTrackData.publisher_metadata.artist);
-      setSongName(currentTrackData.title);
-    }
-  }
 
   return (
     <div
@@ -45,7 +34,10 @@ export default () => {
           zIndex: 1,
           marginTop: 190,
         }}
-        setCurrentTrackData={setCurrentTrackData}
+        setCurrentTrackData={(songName, artistName) => {
+          setSongName(songName);
+          setArtistName(artistName);
+        }}
       />
     </div>
   );

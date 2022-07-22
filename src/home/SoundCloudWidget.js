@@ -12,7 +12,7 @@ export default () => {
         scrolling="no"
         frameborder="no"
         allow="autoplay"
-        src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;`}
+        src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/jay-bear-7/sets/monodrone`}
       ></iframe>
     </div>
   );
